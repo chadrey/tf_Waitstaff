@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>Waitstaff Calculator</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="assets/css/app.css" />
+  </head>
+
+  <body>
+    <div class="container" ng-controller="calculatorController">
+      <div class="row text-center">
+        <h1>Waitstaff Calculator</h1>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-6">
+				  <form class="form-horizontal" name="myForm" ng-submit="submit()">
+						<fieldset>
+							<legend><span>Enter the Meal Details</span></legend>
+							<div class="form-group">
+								<label for="meal.price" class="col-sm-4 control-label">Base Meal Price:</label>
+                <div class="col-sm-6">
+                  <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input id="meal.price" class="form-control" type="number" min="0" step=".01" required ng-model="meal.price" placeholder="Meal Price">
+                  </div>
+                </div>
+							</div>
+							<div class="form-group">
+								<label for="meal.tax" class="col-sm-4 control-label">Tax Rate:</label>
+                <div class="col-sm-6">
+                  <div class="input-group">
+                    <span class="input-group-addon">%</span>
+                    <input id="meal.tax" class="form-control" type="number" min="0" max="100" step="1" required ng-model="meal.tax" placeholder="Tax Rate">
+                  </div>
+                </div>
+							</div>
+							<div class="form-group">
+								<label for="meal.tip" class="col-sm-4 control-label">Tip Percentage:</label>
+                <div class="col-sm-6">
+                  <div class="input-group">
+                    <span class="input-group-addon">%</span>
+                    <input id="meal.tip" class="form-control" type="number" min="0" max="100" step="1" required ng-model="meal.tip" placeholder="Tip Percentage">
+                  </div>
+                </div>
+							</div>
+              <button type="submit">Submit</button>
+              <button type="button" ng-click="cancel()">Cancel</button>
+						</fieldset>
+					</form>
+				</div>
+        <div class="col-md-5">
+          <div class="row text-center">
+						<div class="col-md-12">
+							<fieldset>
+								<legend><span>Customer Charges</span></legend>
+								<dl class="dl-horizontal">
+									<dt>Subtotal:</dt><dd>{{ charges.subTotal | currency : $ : 2 }}</dd>
+									<dt>Tip:</dt>     <dd>{{ charges.tip | currency : $ : 2 }}</dd>
+									<dt>Total:</dt>   <dd style="border-top: 1px solid #000">{{ charges.total | currency : $ : 2 }}</dd>
+								</dl>
+							</fieldset>
+						</div>
+          </div>
+          <div class="row text-center">
+						<div class="col-md-12">
+							<fieldset>
+								<legend><span>My Earnings Info</span></legend>
+								<dl class="dl-horizontal">
+									<dt>Tip Total:</dt>						<dd>{{ earnings.tips | currency : $ : 2 }}</dd>
+									<dt>Meal Count:</dt>					<dd>{{ earnings.mealCount }}</dd>
+									<dt>Average Tip per Meal:</dt><dd>{{ earnings.avgTip | currency : $ : 2 }}</dd>
+								</dl>
+							</fieldset>
+						</div>
+          </div>
+        </div>
+      </div>
+		  <div class="row pull-right">
+        <button type="button" ng-click="tallyReset()">Reset</button>
+		  </div>
+    </div>
+  </body>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/controllers/calculatorController.js"></script>
+</html>

@@ -1,0 +1,36 @@
+/* Fieldset and Legend
+-------------------------------------------------- */
+fieldset {
+  margin: 10px;
+  position: relative;
+  padding: 20px 10px 10px 10px;
+  border: 1px solid #323232;
+  border-radius: 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+}
+
+legend {
+  float: left;
+}
+
+@-moz-document url-prefix() { /* Mozilla hack for legend bug */
+  .a legend span {
+    top: -30px !important;
+    left: 0 !important;
+  }
+}
+
+legend span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 14px;
+  color: #FFF;
+  background: #323232;
+  padding: 5px 10px;
+}
